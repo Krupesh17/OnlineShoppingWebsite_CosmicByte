@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc">
+    
+    <context:component-scan base-package="com.cosmicbyte"/>	<!-- So after receiving URL pattern from 'web.xml' file 
+    														 The dispatcher is going to search received URL pattern in 
+    														 base-package="com.k17", It will search whole 'com.mcdonald'package.  -->
+    <mvc:annotation-driven/>
+    <bean id="viewResolver" 
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/views/"					
+          p:suffix=".jsp" />
+<!-- So after finding the URL Pattern in 'com.k17' package, It will give us one 'String value' 
+     and here we adding prefix & suffix to that String value.
+     After adding 'prefix' and 'suffix' we are going to get one path like:- '/WEB-INF/views/index.jsp'
+     This path is direct our Spring application towards our 'index.jsp' file. -->
+  	
+</beans>
